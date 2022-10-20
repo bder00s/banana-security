@@ -5,7 +5,7 @@ import {AuthContext} from "../context/AuthContext";
 
 function NavBar() {
     const history = useHistory();
-    const {isAuth, logout} = useContext(AuthContext);
+    const {isAuth, logout, login} = useContext(AuthContext);
     console.log(isAuth);
     return (
         <>
@@ -20,7 +20,7 @@ function NavBar() {
                 </Link>
 {/*//Conditioneel renderen { conditie ? true : false }*/}
                 <div>
-                    {isAuth ?
+                    {isAuth ?  //De logout button wordt getoond als gebruiker is ingelogd. Gebruiker wordt doorgelinkt naar homepagina als hij uitlogt
                         <button
                             type="button"
                         onClick={logout}>
@@ -30,7 +30,7 @@ function NavBar() {
                         <>
                         <button
                             type="button"
-                            onClick={() => history.push('/signin')}
+                            onClick={login} //De login button wordt getoond als gebruiker niet is ingelogd en gebruiker wordt doorgelinkt naar login pagina
                         >
                             Log in
                         </button>
